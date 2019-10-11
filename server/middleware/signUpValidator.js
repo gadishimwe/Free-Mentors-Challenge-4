@@ -6,7 +6,7 @@ export default async (req, res, next) => {
   if (rows[0]) {
     return res.status(422).json({
       status: 422,
-      error: 'Email already exists',
+      error: 'Email already exists.',
       path: 'email',
     });
   }

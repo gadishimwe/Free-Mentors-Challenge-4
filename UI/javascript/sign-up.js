@@ -5,7 +5,9 @@ const signUp = async (e) => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const passwordConfirm = document.getElementById('passwordConfirm').value;
+  const spinner = document.querySelector('.spinner');
   document.getElementById('errors').innerHTML = '';
+  spinner.classList.remove('hide');
 
   const response = await fetch('https://gad-free-mentors-v2.herokuapp.com/api/v2/auth/signup', {
     method: 'POST',
@@ -22,6 +24,7 @@ const signUp = async (e) => {
     }),
   });
   const json = await response.json();
+  spinner.classList.add('hide');
   if (json.status !== 201 || json.status === 422) {
     const fields = document.getElementsByClassName('fields');
     const input = document.getElementById(`${json.path}`);

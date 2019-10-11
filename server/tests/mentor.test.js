@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 describe('Testing changing user to mentor', () => {
   it('should return Forbidden: you must login to proceed', (done) => {
     chai.request(app)
-      .patch('/api/v1/user/1')
+      .patch('/api/v2/user/1')
       .end((err, res) => {
         expect(res).to.have.status(401);
         done();
@@ -21,7 +21,7 @@ describe('Testing changing user to mentor', () => {
   });
   it('should return Forbidden: Only Admins can perform this operation', (done) => {
     chai.request(app)
-      .patch('/api/v1/user/1')
+      .patch('/api/v2/user/1')
       .set('Authorization', user1Token)
       .end((err, res) => {
         expect(res).to.have.status(403);
@@ -30,7 +30,7 @@ describe('Testing changing user to mentor', () => {
   });
   it('should return this user does not exist', (done) => {
     chai.request(app)
-      .patch('/api/v1/user/56')
+      .patch('/api/v2/user/56')
       .set('Authorization', adminToken)
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -39,7 +39,7 @@ describe('Testing changing user to mentor', () => {
   });
   it('should return This user is already a mentor', (done) => {
     chai.request(app)
-      .patch('/api/v1/user/3003')
+      .patch('/api/v2/user/3003')
       .set('Authorization', adminToken)
       .end((err, res) => {
         expect(res).to.have.status(422);
@@ -48,7 +48,7 @@ describe('Testing changing user to mentor', () => {
   });
   it('should return User account changed to mentor', (done) => {
     chai.request(app)
-      .patch('/api/v1/user/1000')
+      .patch('/api/v2/user/1000')
       .set('Authorization', adminToken)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -60,7 +60,7 @@ describe('Testing changing user to mentor', () => {
 describe('Testing viewing all mentors', () => {
   it('should return User account changed to mentor', (done) => {
     chai.request(app)
-      .get('/api/v1/mentors')
+      .get('/api/v2/mentors')
       .set('Authorization', user1Token)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -71,7 +71,7 @@ describe('Testing viewing all mentors', () => {
 describe('Testing viewing specific mentor', () => {
   it('should return This mentor does not exist', (done) => {
     chai.request(app)
-      .get('/api/v1/mentors/90')
+      .get('/api/v2/mentors/90')
       .set('Authorization', user1Token)
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -80,7 +80,7 @@ describe('Testing viewing specific mentor', () => {
   });
   it('should return property data with status of 200', (done) => {
     chai.request(app)
-      .get('/api/v1/mentors/3003')
+      .get('/api/v2/mentors/3003')
       .set('Authorization', user1Token)
       .end((err, res) => {
         expect(res).to.have.status(200);

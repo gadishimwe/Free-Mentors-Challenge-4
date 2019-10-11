@@ -11,7 +11,7 @@ describe('testing sign up', () => {
       password: 'nn',
     };
     chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .send(newUser)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -30,7 +30,7 @@ describe('testing sign up', () => {
       expertise: 'Javascript',
     };
     chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .send(newUser)
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -50,7 +50,7 @@ describe('testing sign up', () => {
       expertise: 'Javascript',
     };
     chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .send(newUser)
       .end((err, res) => {
         expect(res).to.have.status(422);
@@ -66,7 +66,7 @@ describe('Testing sign in', () => {
       password: 'jieojf',
     };
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(invalidCredentials)
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -79,7 +79,7 @@ describe('Testing sign in', () => {
       password: 'jjj',
     };
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(user)
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -92,7 +92,7 @@ describe('Testing sign in', () => {
       password: 'gadish123',
     };
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v2/auth/signin')
       .send(user)
       .end((err, res) => {
         expect(res).to.have.status(200);
