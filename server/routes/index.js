@@ -5,9 +5,9 @@ import session from './session';
 
 const app = express();
 
-app.use('/api/v1/', user);
-app.use('/api/v1/', mentor);
-app.use('/api/v1/', session);
+app.use('/api/v2/', user);
+app.use('/api/v2/', mentor);
+app.use('/api/v2/', session);
 app.get('/', (req, res) => {
   res.status(200);
   res.setHeader('Content-Type', 'text/html;charset=utf8');

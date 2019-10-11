@@ -10,6 +10,8 @@ const app = express();
 app.use(express.json);
 
 export const usersSignUp = async (req, res) => {
+  console.log(req.body);
+  
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
   class User {
     constructor() {
@@ -21,7 +23,7 @@ export const usersSignUp = async (req, res) => {
       this.address = req.body.address,
       this.bio = req.body.bio,
       this.occupation = req.body.occupation,
-      this.expertise = req.body.expertise;
+      this.expertise = req.body.expertise
     }
   }
 
@@ -32,7 +34,7 @@ export const usersSignUp = async (req, res) => {
   const token = encrypter(rows.email, rows.userid);
   return res.status(201).json({
     status: 201,
-    message: 'User created successfully',
+    message: 'Account created successfully.',
     data: {
       token,
     },

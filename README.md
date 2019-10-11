@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/gadishimwe/Free-Mentors-Challenge-4.svg?branch=Develop)](https://travis-ci.org/gadishimwe/Free-Mentors-Challenge-4)
 [![Coverage Status](https://coveralls.io/repos/github/gadishimwe/Free-Mentors-Challenge-4/badge.svg?branch=Develop)](https://coveralls.io/github/gadishimwe/Free-Mentors-Challenge-4?branch=Develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/69a13d2cfe4f028b957b/maintainability)](https://codeclimate.com/github/gadishimwe/Free-Mentors-Challenge-4/maintainability)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
 >Free Mentors is a social initiative where accomplished professionals become role models to young people to provide free mentorship sessions.
