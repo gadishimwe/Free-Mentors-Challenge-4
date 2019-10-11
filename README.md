@@ -7,7 +7,7 @@
 
 >Free Mentors is a social initiative where accomplished professionals become role models to young people to provide free mentorship sessions.
 
-## Free mentors UI templates are hosted [here](https://gadishimwe.github.io/Free-Mentors/) on gh-pages.
+## Free mentors UI templates are hosted [here](https://gadishimwe.github.io/Free-Mentors-Challenge-4/) on gh-pages.
 
 
 ## Free mentors API Endpoints are hosted on [Heroku](https://gad-free-mentors.herokuapp.com/).
