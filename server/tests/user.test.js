@@ -8,7 +8,63 @@ describe('testing sign up', () => {
   it('should validate the user', (done) => {
     const newUser = {
       email: 'hhhh@gmail.com',
+    };
+    chai.request(app)
+      .post('/api/v2/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+      });
+    done();
+  });
+  it('should validate the user', (done) => {
+    const newUser = {
+      firstName: 'gggggg',
+    };
+    chai.request(app)
+      .post('/api/v2/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+      });
+    done();
+  });
+  it('should validate the user', (done) => {
+    const newUser = {
+      email: 'gmail.com',
+      firstName: 'gggggg',
+      lastName: 'dhd',
+    };
+    chai.request(app)
+      .post('/api/v2/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+      });
+    done();
+  });
+  it('should validate the user', (done) => {
+    const newUser = {
+      email: 'hhhh@gmail.com',
       password: 'nn',
+      firstName: 'gggggg',
+      lastName: 'dhd',
+    };
+    chai.request(app)
+      .post('/api/v2/auth/signup')
+      .send(newUser)
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+      });
+    done();
+  });
+  it('should validate the user', (done) => {
+    const newUser = {
+      email: 'hhhh@gmail.com',
+      password: 'nnhduhduhdu',
+      firstName: 'gggggg',
+      lastName: 'dhd',
+      passwordConfirm: 'duhdbgyg',
     };
     chai.request(app)
       .post('/api/v2/auth/signup')
@@ -22,12 +78,9 @@ describe('testing sign up', () => {
     const newUser = {
       email: 'james@gmail.com',
       password: 'james123',
+      passwordConfirm: 'james123',
       firstName: 'james',
       lastName: 'bond',
-      address: 'Nyarugenge',
-      bio: 'uhfuif fihwiufhw fuwhfu ufhwufhu',
-      occupation: 'Developer',
-      expertise: 'Javascript',
     };
     chai.request(app)
       .post('/api/v2/auth/signup')
