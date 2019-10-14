@@ -41,13 +41,14 @@ export const usersSignUp = async (req, res) => {
   });
 };
 export const usersSignIn = async (req, res) => {
-  const rows = await select('userid, email', 'users', `email='${req.body.email}'`);
+  const rows = await select('userid, email, isadmin, ismentor', 'users', `email='${req.body.email}'`);
   const token = encrypter(rows[0].email, rows[0].userid);
   res.status(200).json({
     status: 200,
     message: 'User is successfully logged in',
     data: {
       token,
+      ...rows[0],
     },
   });
 };

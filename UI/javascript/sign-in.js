@@ -1,20 +1,35 @@
-const userDirector = () => {
-    const direction = document.querySelector(".redirecting");
-    const signin = document.querySelector("#sign-in")
-    const email = document.querySelector(".email");
-    const password = document.querySelector(".password");
-    const adminEmail = "admin@freementors.com";
-    const adminPassword = "admin@123";
-    const mentorEmail = "mentor@freementors.com";
-    const mentorPassword = "mentor@123"
+const signIn = async (e) => {
+  e.preventDefault();
+  const email = document.querySelector('.email').value;
+  const password = document.querySelector('.password').value;
+  const spinner = document.querySelector('.spinner');
+  spinner.classList.remove('hide');
 
-    direction.addEventListener("click", () => {
-        if(email.value === adminEmail && password.value === adminPassword){
-            signin.setAttribute("action", "admin.html");
-        }
-        if(email.value === mentorEmail && password.value === mentorPassword){
-            signin.setAttribute("action", "mentor-homepage.html");
-        }
-    })
-}
-userDirector();
+  const response = await fetch('http://localhost:3000/api/v2/auth/signin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+  const json = await response.json();
+  spinner.classList.add('hide');
+  if (json.status !== 200) {
+    document.getElementById('errors').innerHTML = json.error;
+  }
+  if (json.status === 200 && json.data.ismentor) {
+    window.location.href = 'mentor-homepage.html';
+    return;
+  }
+  if (json.status === 200 && json.data.isadmin) {
+    window.location.href = 'admin.html';
+    return;
+  }
+  if (json.status === 200) {
+    window.location.href = 'user-homepage.html';
+  }
+};
+document.getElementById('sign-in').addEventListener('submit', signIn);

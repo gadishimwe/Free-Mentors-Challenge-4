@@ -9,10 +9,9 @@ const signUp = async (e) => {
   document.getElementById('errors').innerHTML = '';
   spinner.classList.remove('hide');
 
-  const response = await fetch('https://gad-free-mentors-v2.herokuapp.com/api/v2/auth/signup', {
+  const response = await fetch('http://localhost:3000/api/v2/auth/signup', {
     method: 'POST',
     headers: {
-      'Accept': 'application/json, text/plain',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -25,13 +24,13 @@ const signUp = async (e) => {
   });
   const json = await response.json();
   spinner.classList.add('hide');
-  if (json.status !== 201 || json.status === 422) {
+  if (json.status !== 201) {
     const fields = document.getElementsByClassName('fields');
     const input = document.getElementById(`${json.path}`);
     [...fields].forEach((field) => {
       field.style.borderBottom = '0.1px solid #0067fc';
     });
-    input.style.borderBottom = '2px solid red';
+    input.style.borderBottom = '1px solid red';
     document.getElementById('errors').innerHTML = json.error;
   }
   if (json.status === 201) {
