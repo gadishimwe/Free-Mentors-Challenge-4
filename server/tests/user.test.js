@@ -122,7 +122,7 @@ describe('Testing sign in', () => {
       .post('/api/v2/auth/signin')
       .send(invalidCredentials)
       .end((err, res) => {
-        expect(res).to.have.status(401);
+        expect(res).to.have.status(400);
       });
     done();
   });
@@ -135,7 +135,7 @@ describe('Testing sign in', () => {
       .post('/api/v2/auth/signin')
       .send(user)
       .end((err, res) => {
-        expect(res).to.have.status(401);
+        expect(res).to.have.status(400);
       });
     done();
   });
