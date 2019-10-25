@@ -89,3 +89,24 @@ describe('Testing viewing specific mentor', () => {
       });
   });
 });
+
+describe('Testing removing user from mentor', () => {
+  it('should return no content error if requested id associated with no mentor', (done) => {
+    chai.request(app)
+      .patch('/api/v2/mentors/800')
+      .set('Authorization', adminToken)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+  it('should return User account changed to mentor', (done) => {
+    chai.request(app)
+      .patch('/api/v2/mentors/1001')
+      .set('Authorization', adminToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});

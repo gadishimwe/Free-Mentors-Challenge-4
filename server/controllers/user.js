@@ -10,8 +10,6 @@ const app = express();
 app.use(express.json);
 
 export const usersSignUp = async (req, res) => {
-  console.log(req.body);
-  
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
   class User {
     constructor() {
@@ -50,5 +48,12 @@ export const usersSignIn = async (req, res) => {
       token,
       ...rows[0],
     },
+  });
+};
+export const allUsers = async (req, res) => {
+  const rows = await select('userid, firstname, lastname, email,ismentor', 'users', `isadmin='${false}'`);
+  res.status(200).json({
+    status: 200,
+    data: rows,
   });
 };

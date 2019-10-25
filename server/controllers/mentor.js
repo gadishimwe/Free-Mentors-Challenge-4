@@ -5,7 +5,7 @@ export const userChangeToMentor = async (req, res) => {
   res.status(200).json({
     status: 200,
     data: {
-      message: 'User account changed to mentor',
+      message: 'User changed to mentor.',
     },
   });
 };
@@ -21,5 +21,14 @@ export const specificMentor = async (req, res) => {
   res.status(200).json({
     status: 200,
     data: rows[0],
+  });
+};
+export const removeMentor = async (req, res) => {
+  await update('users', `ismentor=${false}`, `userid='${req.params.userId}'`);
+  res.status(200).json({
+    status: 200,
+    data: {
+      message: 'User removed from mentor.',
+    },
   });
 };

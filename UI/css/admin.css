@@ -186,6 +186,7 @@ header{
 
 .main{
     background: #e9ebee;
+    min-height: 100%;
 }
 
 /* Left section */
@@ -214,14 +215,14 @@ header{
 #mentors-sessions{
     border-left: orange solid 5px;
 }
-#reviews-sessions{
+#all-users-sessions{
     border-left: #0067fc solid 5px;
 }
 .my-sessions a{
     text-decoration: none;
     color: #586069
 }
-.my-users-container, .reviews-container{
+/* .my-users-container, .reviews-container{
     max-height: 200px;
     overflow-y: scroll;
 }
@@ -231,8 +232,8 @@ header{
     margin-left: 30px;
     width: 210px;
     display: none;
-}
-.my-users .profile-photo, .user-profile .profile-photo, .user-review-profile .profile-photo{
+} */
+.user-profile .profile-photo{
     background: url(../assets/profile-white.png) green;
     background-position: center;
     background-size: cover;
@@ -240,10 +241,10 @@ header{
     border-radius: 50%;
     width: 30px;
 }
-.my-users .names{
+/* .my-users .names{
     padding-top: 4px;
     overflow: hidden;
-}
+} */
 .my-sessions:hover #users-sessions{
     background: green;
 }
@@ -256,19 +257,19 @@ header{
 .my-sessions:hover #mentors-sessions h3{
     color: white;
 }
-.my-sessions:hover #reviews-sessions{
+.my-sessions:hover #all-users-sessions{
     background: #0067fc;
 }
-.my-sessions:hover #reviews-sessions h3{
+.my-sessions:hover #all-users-sessions h3{
     color: white;
 }
 .my-sessions:hover .my-users, .my-sessions:hover .review-rate{
     display: grid;
 }
-.my-users:hover{
+/* .my-users:hover{
     background: white;
-}
-.review-rate{
+} */
+/* .review-rate{
     display: none;
     grid-template-columns: 1fr;
     padding: 5px;
@@ -324,7 +325,7 @@ header{
 }
 .posted-review button:active{
     transform: scale(0.9);
-}
+} */
 
 /* Right section */
 
@@ -335,13 +336,17 @@ header{
 .section2 h1{
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
+.list-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(310px,1fr));
+    grid-gap: 10px;
+    padding: 5px;
+}
 .user{
     display: grid;
     grid-template-columns: 1fr;
-    height: 200px;
+    height: 150px;
     padding: 5px;
-    margin: 5px;
-    margin-top: 10px;
     text-align: start;
     background: white;
     border-radius: 6px;
@@ -383,7 +388,7 @@ header{
     background: rgb(144, 255, 144);
     padding: 5px;
 }
-.make-mentor button{
+.change{
     /* border: red solid 1px; */
     font-size: 20px;
     width: 100%;
@@ -395,17 +400,26 @@ header{
     background: #0067fc;
     color: white;
 }
-.make-mentor button:hover{
+.change:hover{
     outline: none;
     cursor: pointer;
     background: #0059d6;
 }
-.make-mentor button:focus{
+.change:focus{
     outline: none;
 }
-.make-mentor button:active{
+.change:active{
     background: #3388ff;
     transform: scale(0.95);
+}
+.remove-mentor{
+    background: orange;
+}
+.remove-mentor:hover{
+    background: rgb(255, 94, 0);
+}
+.remove-mentor:active{
+    background: rgb(255, 199, 96);
 }
 
 
@@ -506,9 +520,13 @@ footer{
         position: unset;
         background: #e9ebee;
     }
+    .list-container{
+        grid-template-columns: repeat(auto-fit,minmax(365px,1fr));
+        padding: 20px;
+    }
     .user{
         height: 220px;
-        margin: 20px;
+        /* margin: 20px; */
         padding: 10px;
     }
     .user-profile .profile-photo{
@@ -535,7 +553,6 @@ footer{
     .main{
          max-width: 1440px;
          margin: auto;
-         min-height: 100%;
          display: grid;
          grid-template-rows: auto 1fr auto;
 

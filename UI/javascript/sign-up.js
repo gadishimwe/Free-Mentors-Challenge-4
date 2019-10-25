@@ -1,3 +1,5 @@
+const url = 'http://127.0.0.1:3000/api/v2';
+
 const signUp = async (e) => {
   e.preventDefault();
   const firstName = document.getElementById('firstName').value;
@@ -9,7 +11,7 @@ const signUp = async (e) => {
   document.getElementById('errors').innerHTML = '';
   spinner.classList.remove('hide');
 
-  const response = await fetch('http://localhost:3000/api/v2/auth/signup', {
+  const response = await fetch(`${url}/auth/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

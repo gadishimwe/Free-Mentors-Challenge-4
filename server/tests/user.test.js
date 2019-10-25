@@ -1,8 +1,12 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
+import dotenv from 'dotenv';
 import app from '../../server';
 
+dotenv.config();
 chai.use(chaiHttp);
+
+const adminToken = process.env.Admin;
 
 describe('testing sign up', () => {
   it('should validate the user', (done) => {
@@ -150,6 +154,18 @@ describe('Testing sign in', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('data');
+        done();
+      });
+  });
+});
+
+describe('Testing Viewing all users', () => {
+  it('should return status 200 with list of users in data property', (done) => {
+    chai.request(app)
+      .get('/api/v2/users')
+      .set('Authorization', adminToken)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
         done();
       });
   });
