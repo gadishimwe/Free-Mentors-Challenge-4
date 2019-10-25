@@ -1,4 +1,4 @@
-const url = 'https://gad-free-mentors.herokuapp.com/api/v2';
+const url = 'https://gad-free-mentors-v2.herokuapp.com/api/v2';
 
 const signUp = async (e) => {
   e.preventDefault();
