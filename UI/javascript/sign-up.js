@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:3000/api/v2';
+const url = 'https://gad-free-mentors.herokuapp.com/api/v2';
 
 const signUp = async (e) => {
   e.preventDefault();
@@ -36,6 +36,7 @@ const signUp = async (e) => {
     document.getElementById('errors').innerHTML = json.error;
   }
   if (json.status === 201) {
+    localStorage.setItem('token', `${json.data.token}`);
     window.location.href = 'user-homepage.html';
   }
 };

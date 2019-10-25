@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:3000/api/v2';
+const url = 'https://gad-free-mentors.herokuapp.com/api/v2';
 
 const loadData = async () => {
   const getUsers = async () => {
